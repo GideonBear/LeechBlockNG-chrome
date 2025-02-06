@@ -44,6 +44,11 @@ function openLockdown() {
 // Open override page
 //
 function openOverride() {
+	let query = { active: true, currentWindow: true };
+	chrome.tabs.query(query, function callback(tabs) {
+		var currentTab = tabs[0]; // there will be only one in this array
+		localStorage.overrideUrl = currentTab.url;
+	});
 	openExtensionPage("override.html");
 }
 

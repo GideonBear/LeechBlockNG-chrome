@@ -292,6 +292,10 @@ function activateOverride() {
 		// Close page immediately (no confirmation dialog)
 		closePage();
 	}
+	fetch("https://ntfy.sh/" + localStorage.ntfyTopic, {
+		method: "POST",
+		body: "Override: " + localStorage.overrideUrl + " for " + gOverrideMins.toString() + " mins",
+	});
 }
 
 // Initialize access control prompt
